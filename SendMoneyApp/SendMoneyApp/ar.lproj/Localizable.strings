@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  SendMoneyApp
+
+  Created by Asma Bee on 19/03/2025.
+  
+*/
+"send_money" = "إرسال الأموال";
+"send" = "إرسال";
+"provider" = "المزود";
+"saved_requests" = "الطلبات المحفوظة";
+"service" = "الخدمة";
+"details" = "التفاصيل";
