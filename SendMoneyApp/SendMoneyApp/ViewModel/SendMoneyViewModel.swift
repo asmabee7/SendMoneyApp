@@ -34,25 +34,31 @@ class SendMoneyViewModel: ObservableObject {
         fieldValues[fieldName] = value
     }
     
-    func validateFields() -> Bool {
+     func validateFields() -> Bool {
         guard let provider = selectedProvider else { return false }
         errors.removeAll()
         
         for field in provider.required_fields {
             let value = fieldValues[field.name] ?? ""
             if let validation = field.validation {
-                if validation == "n" && value.isEmpty {
-                    errors[field.name] = field.errorMessage
+                if validation == "" && value.isEmpty {
+                    errors[field.name] = field.errorMessage //localizedString(field.errorMessage)
                 } else if let regex = try? NSRegularExpression(pattern: validation),
                           regex.firstMatch(in: value, range: NSRange(value.startIndex..., in: value)) == nil {
+                    errors[field.name] = field.errorMessage //localizedString(field.errorMessage)
+                }
+            }
+            if let maxLength = field.maxLength , maxLength != 0 {
+                if value.count > maxLength {
                     errors[field.name] = field.errorMessage
+
                 }
             }
         }
         return errors.isEmpty
     }
     
-    private func saveRequest() {
+    func saveRequest() {
         guard let service = selectedService,
               let provider = selectedProvider,
               let amountStr = fieldValues["amount"],
@@ -75,7 +81,7 @@ class SendMoneyViewModel: ObservableObject {
         selectedProvider = service?.providers.first
     }
     
-    private func localizedString(_ label: LocalizedLabel?) -> String {
+    func localizedString(_ label: LocalizedLabel?) -> String {
         store.state.currentLanguage == .english ? (label?.en ?? "") : (label?.ar ?? "")
     }
 }

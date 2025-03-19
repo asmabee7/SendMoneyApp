@@ -13,7 +13,7 @@ struct HomeScreen: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            SendMoneyScreen()
+            SendMoneyScreen(store: store)
                 .tabItem {
                     Label(Constants().sendMoney, systemImage: "dollarsign.circle")
                 }
