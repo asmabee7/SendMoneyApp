@@ -2,7 +2,7 @@
 
 ## Overview
 
-This assignment is designed to evaluate your proficiency in iOS development, including UI
+This assignment is designed to evaluate the proficiency in iOS development, including UI
 design, data handling, application state management, and implementation of dynamic features.
 
 **App Features:**
@@ -12,11 +12,17 @@ design, data handling, application state management, and implementation of dynam
 - The send money screen is loaded dynamically based on the json provided.
 - All the validations are added before we click the send button.
 - Once the transaction is completed, we can see the saved requests on the Saved requests tab.
-
+- Followed the iOS Coding guidelines for the UI and UX.
+- The UI is designed using SwiftUI.
   
 **Architecture Pattern**: 
-MVVM is used for the UI and Redux is used for the state management.
+- MVVM is used for the UI to separate the business login and UI.
+- Redux is used for the state management.
 
+**Instructions to run the app**: 
+- git clone <repositoryurl>
+- cd SendMoneyApp
+- Open the code in xcode and run the project
 
 **Screenshots:**
 
